@@ -446,3 +446,4 @@ with tabs[2]:
         st.download_button("⬇️ Export to Excel/CSV", csv, "patient_history.csv", "text/csv")
     else:
         st.info("No records found. Run a diagnosis to save data here.")
+
