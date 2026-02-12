@@ -6,6 +6,26 @@ import plotly.graph_objects as go
 from datetime import datetime
 import time
 import random
+import shap
+explainer = shap.TreeExplainer(model)
+shap_vals = explainer.shap_values(input_df)
+st.pyplot(shap.summary_plot(shap_vals[1], input_df))
+
+st.markdown("""
+<style>
+@media (max-width: 768px) {
+    .block-container {
+        padding: 1rem !important;
+    }
+    h1 {font-size: 28px;}
+    .stButton button {
+        width:100%;
+        font-size:16px;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
+
 
 # --- 1. SAFE LIBRARY LOADING ---
 try:
@@ -16,11 +36,11 @@ except ImportError:
 
 # --- 2. APP CONFIGURATION ---
 st.set_page_config(
-    page_title="MediGuard AI Pro",
+    page_title="MediGuard AI Pro+",
     layout="wide",
-    page_icon="🩺",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed"
 )
+
 
 # --- 3. ADVANCED UI/UX STYLING (CSS) ---
 st.markdown("""
